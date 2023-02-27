@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MvcFamilyTriz.Models.Eleve>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h2>Liste des élèves</h2>
+
+<a class="btn btn-primary p-2 mt-2 mb-2" asp-action="Create">Ajouter un nouvel élève</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.promotion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.prenom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.promotion)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.id"><i style="font-size: 1rem" class="bi bi-eye-fill"></i></a> |
+                    <a asp-action="Edit" asp-route-id="@item.id"><i style="font-size: 1rem" class="bi bi-pencil-square"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.id"><i style="font-size: 1rem" class="bi bi-trash-fill"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

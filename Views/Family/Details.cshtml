@@ -1,0 +1,65 @@
+@model MvcFamilyTriz.Models.Famille
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.couleur)</h2>
+
+<a class="btn btn-primary p-2 mt-2 mb-2" asp-action="Edit" asp-route-id="@Model.id">Modifier la famille</a>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.points)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.points)
+        </dd>
+        <dt class="col-sm-3">
+            Nombre de personnes
+        </dt>
+        <dd class="col-sm-9">
+           @Model.Eleves.Count
+        </dd>
+        <dd class="col-sm-9">
+            @if (Model.Eleves.Count > 0)
+            {
+                <table class="table">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Promotion</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model.Eleves)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.nom)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.prenom)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.promotion)
+                            </td>
+                            <td>
+                                <a asp-controller="Student" asp-action="Details" asp-route-id="@item.id">Details</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <text>None</text>
+            }
+
+        </dd>
+    </dl>
+</div>
+<div> |
+    <a asp-action="Index">Retour à la liste des familles</a>
+</div>

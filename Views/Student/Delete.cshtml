@@ -1,0 +1,53 @@
+@model MvcFamilyTriz.Models.Eleve
+
+@{
+    ViewData["Title"] = "Suppression";
+}
+
+<h2>Suppression d'un élève</h2>
+
+<h4>Êtes-vous sûr de vouloir supprimer cet élève ?</h4>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.nom)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.nom)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.prenom)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.prenom)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.promotion)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.promotion)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.famille)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.famille.couleur)
+        </dd>
+        @if (Model.parrain != null)
+            {
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.parrain)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.parrain.prenom) @Html.DisplayFor(model => model.parrain.nom)
+                </dd>
+            }
+    </dl>
+
+    <form asp-action="DeleteConfirmed">
+        <input type="hidden" asp-for="id" />
+        <input type="submit" value="Supprimer" class="btn btn-danger mt-2 mb-2" /> <br/>
+        <a asp-action="Index">Retour à la liste des élèves</a>
+    </form>
+</div>

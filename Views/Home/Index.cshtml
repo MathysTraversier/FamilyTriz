@@ -1,0 +1,61 @@
+﻿@model MvcFamilyTriz.Models.Famille
+
+@{
+    ViewData["Title"] = "Page d'accueil";
+    var rougeJson = Json.Serialize(ViewBag.Rouge);
+    var vertJson = Json.Serialize(ViewBag.Vert);
+    var bleuJson = Json.Serialize(ViewBag.Bleu);
+    var jauneJson = Json.Serialize(ViewBag.Jaune);
+    var orangeJson = Json.Serialize(ViewBag.Orange);
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bienvenue</h1>
+    
+    <script type="text/javascript">
+      //déclaration des points de chaque famille en js
+      window.rouge = @rougeJson;
+      window.vert = @vertJson;
+      window.bleu = @bleuJson;
+      window.jaune = @jauneJson;
+      window.orange = @orangeJson;
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.arrayToDataTable([
+            ["Famille", "Point(s)", { role: "style" } ],
+            ["Rouge", window.rouge.points, "red"],
+            ["Vert", window.vert.points, "green"],
+            ["Bleu", window.bleu.points, "blue"],
+            ["Jaune", window.jaune.points, "gold"],
+            ["Orange", window.orange.points, "orange"],
+        ]);
+
+        // Set chart options
+        var options = {
+            title: "Points de famille",
+            width: 800,
+            height: 500,
+            bar: {groupWidth: "95%"},
+            legend: { position: "none" },
+            vAxis: {minValue: 0},
+      };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+
+    <div align="center" id="chart_div"></div>
+</div>

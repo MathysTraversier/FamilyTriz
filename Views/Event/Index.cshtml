@@ -1,0 +1,121 @@
+@model IEnumerable<MvcFamilyTriz.Models.Evenement>
+
+@{
+    ViewData["Title"] = "Événements";
+    var today = DateTime.Today;
+}
+
+<div class="tabs mt-2 mb-2">
+    <button class="btn btn-dark" onclick="showTab('tab1')">Événements à venir</button>
+    <button class="btn btn-dark" onclick="showTab('tab2')">Événements passés</button>
+</div>
+
+<div class="tab mt-2 mb-2" id="tab1">
+    <h2>Liste des événements à venir</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.nom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nbPointAGagner)
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {   
+                @if(item.date > today)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nom)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nbPointAGagner)
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.id"><i style="font-size: 1rem" class="bi bi-eye-fill"></i></a> |
+                            <a asp-action="Edit" asp-route-id="@item.id"><i style="font-size: 1rem" class="bi bi-pencil-square"></i></a> |
+                            <a asp-action="Delete" asp-route-id="@item.id"><i style="font-size: 1rem" class="bi bi-trash-fill"></i></a>
+                        </td>
+                        <td>
+                            <a asp-action="UpdatePoints" asp-route-id="@item.id">Attribution des points</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<div class="tab" id="tab2" style="display:none">
+    <h2>Liste des événements passés</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.nom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nbPointAGagner)
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {   
+                @if(item.date <= today)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nom)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nbPointAGagner)
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.id"><i style="font-size: 1rem" class="bi bi-eye-fill"></i></a> |
+                            <a asp-action="Edit" asp-route-id="@item.id"><i style="font-size: 1rem" class="bi bi-pencil-square"></i></a> |
+                            <a asp-action="Delete" asp-route-id="@item.id"><i style="font-size: 1rem" class="bi bi-trash-fill"></i></a>
+                        </td>
+                        <td>
+                            <a asp-action="Points" asp-route-id="@item.id">Attribution des points</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<a class="btn btn-primary p-2 mt-2 mb-2" asp-action="Create">Créer un nouvel événement</a>
+
+<script>
+    function showTab(tabId) {
+        // Masquez tous les onglets
+        var tabs = document.getElementsByClassName("tab");
+        for (var i = 0; i < tabs.length; i++) {
+            tabs[i].style.display = "none";
+        }
+
+        // Affichez l'onglet sélectionné
+        document.getElementById(tabId).style.display = "block";
+    }
+</script>

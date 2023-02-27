@@ -1,0 +1,31 @@
+<head>
+    <link rel="stylesheet" href="../../wwwroot/css/family.css" />
+</head>
+<body>
+    @{
+    ViewData["Title"] = "Familles";
+    }
+    <h1>@ViewData["Title"]</h1>
+
+    <div class ="container p-3 text-center">
+        <div class="row">
+            <div class="col-4 p-5">
+                <a asp-area="" asp-action="Details" asp-route-id="7"><i style="color: red; font-size: 5rem" class="bi bi-circle-fill"></i></a>
+            </div>
+            <div class="col-4 p-5">
+                <a asp-area="" asp-action="Details" asp-route-id="9"><i style="color: blue; font-size: 5rem" width="32" class="bi bi-circle-fill"></i></a>
+            </div>
+            <div class="col-4 p-5">
+                <a asp-area="" asp-action="Details" asp-route-id="8"><i style="color: green; font-size: 5rem" width="32" class="bi bi-circle-fill"></i></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 p-5">
+                <a asp-area="" asp-action="Details" asp-route-id="10"><i style="color: orange; font-size: 5rem" width="32" class="bi bi-circle-fill"></i></a>
+            </div>
+            <div class="col-6 p-5">
+                <a asp-area="" asp-action="Details" asp-route-id="6"><i style="color: gold; font-size: 5rem" width="32" class="bi bi-circle-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</body>

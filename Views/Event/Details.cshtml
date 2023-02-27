@@ -1,0 +1,34 @@
+@model MvcFamilyTriz.Models.Evenement
+
+@{
+    ViewData["Title"] = "Détails";
+}
+
+<h2>@Html.DisplayFor(model => model.nom)</h2>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.description)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.date)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.nbPointAGagner)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.nbPointAGagner)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Retour à la liste des événements</a>
+</div>

@@ -1,0 +1,41 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.tailleh20 dd{
+	height:20%;
+	background-color:orange;
+}
+.tailleh30 dd{
+	height:30%;
+	background-color:green;
+}
+.tailleh50 dd{
+	height:50%;
+	background-color:blue;
+}
+.tailleh60 dd{
+	height :60%;
+	background-color:yellow;
+}
+
+.tailleh80 dd{
+	height :60%;
+	background-color:red;
+}
+

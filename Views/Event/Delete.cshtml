@@ -1,0 +1,44 @@
+@model MvcFamilyTriz.Models.Evenement
+
+@{
+    ViewData["Title"] = "Suppression";
+}
+
+<h2>Suppression d'un événement</h2>
+
+<h4>Êtes-vous sûr de vouloir supprimer cet événement ?</h4>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.nom)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.nom)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.description)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.nbPointAGagner)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.nbPointAGagner)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.date)
+        </dd>
+    </dl>
+
+    <form asp-action="DeleteConfirmed">
+        <input type="hidden" asp-for="id" />
+        <input type="submit" value="Supprimer" class="btn btn-danger mt-2 mb-2" /> <br/>
+        <a asp-action="Index">Retour à la liste des événements</a>
+    </form>
+</div>
